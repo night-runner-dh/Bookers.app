@@ -1,2 +1,35 @@
-<h1>Books#index</h1>
-<p>Find me in app/views/books/index.html.erb</p>
+<h1>Books</h1>
+<div class="list-wrap">
+<% @lists.each do |list| %>
+  <div class= "list-box">
+    <div class="list-comment">
+   
+      <span class="list-title"><%= list.title %></span>
+      <span class="list-body"><%= list.body %></span>
+      <span class="list-show"><%=link_to "show", book_path(list.id) %></span>
+      <span class="list-edit"><%=link_to "edit", edit_book_path(list.id) %></span>
+      <%= link_to "destroy", book_path(list.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+      
+    </div>
+  </div>
+<% end %>
+</div>
+
+<h2>New Book</h2>
+<!-- form_with部分 -->
+<%= form_with model: @list, url: '/books', method: :post  do |f| %>
+  
+  <div class="field">
+    <div>Title</div>
+    <%= f.text_field :title %>
+  </div>
+  
+  <div class="field">
+    <div>Body</div>
+    <%= f.text_area :body %>
+  </div>
+
+  <div>
+    <%= f.submit 'Create Book' %>
+  </div>
+<% end %>

@@ -1,8 +1,18 @@
-<h2>タイトル</h2>
-<p><%= @book.title %></p>
 
-<h2>本文</h2>
-<p><%= @book.body %></p>
+<div class="ShowField">
+    <strong>Title:</strong>
+    <span><%= @list.title %></span>
+</div>
 
-<%= link_to "編集", edit_list_path(@book.id) %>
-<%= link_to "削除", list_path(@book.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+<div class="ShowField">
+    <strong>Body:</strong>
+    <%= @list.body %>
+</div>
+
+<div class="Controller">
+    <%= link_to "Edit", edit_book_path(@list.id) %>
+    <span> | </span>
+    <%=link_to "Back", "/books" %>
+</div>
+
+
