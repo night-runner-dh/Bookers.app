@@ -1,13 +1,13 @@
 <h1>Books</h1>
  <table>
   <tr><th>Ttile</th><th>Body</th><th></th><th></th><th></th></tr>
-  <% @lists.each do |list| %>
+  <% @books.each do |book| %>
     <tr>
-        <td><span class="list-title"><%= list.title %></span></td>
-        <td><span class="list-body"><%= list.body %></span></td>
-        <td><span class="list-show"><%=link_to "show", book_path(list.id) %></span></td>
-        <td><span class="list-edit"><%=link_to "edit", edit_book_path(list.id) %></span></td>
-        <td><%= link_to "destroy", book_path(list.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
+        <td><span class="book-title"><%= book.title %></span></td>
+        <td><span class="book-body"><%= book.body %></span></td>
+        <td><span class="book-show"><%=link_to "show", book_path(book.id) %></span></td>
+        <td><span class="book-edit"><%=link_to "edit", edit_book_path(book.id) %></span></td>
+        <td><%= link_to "Destroy", book_path(book.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
     </tr>
   <% end %>
 </table>
@@ -15,8 +15,17 @@
 
 
 <h2>New Book</h2>
+
+<% if @book.errors.any? %>
+  <%= @book.errors.count %>件のerrorが発生しました
+  <ul>
+    <% @book.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
  <!-- form_with部分 -->
-<%= form_with model: @list, url: '/books', method: :post  do |f| %>
+<%= form_with model: @book, url: '/books', method: :post  do |f| %>
   
   <div class="field">
     <div>Title</div>

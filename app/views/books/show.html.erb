@@ -1,16 +1,16 @@
 
 <div class="ShowField">
     <strong>Title:</strong>
-    <span><%= @list.title %></span>
+    <span><%= @book.title %></span>
 </div>
 
 <div class="ShowField">
     <strong>Body:</strong>
-    <%= @list.body %>
+    <%= @book.body %>
 </div>
 
 <div class="Controller">
-    <%= link_to "Edit", edit_book_path(@list.id) %>
+    <%= link_to "Edit", edit_book_path(@book.id) %>
     <span> | </span>
     <%=link_to "Back", "/books" %>
 </div>

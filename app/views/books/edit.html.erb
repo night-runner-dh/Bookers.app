@@ -1,6 +1,14 @@
 <h1>Editing Book</h1>
+<% if @book.errors.any? %>
+  <%= @book.errors.count %>件のerrorが発生しました
+  <ul>
+    <% @book.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
 
-<%= form_with model: @list, url: '/books/' + @list.id.to_s, method: :post  do |f| %>
+<%= form_with model: @book, url: book_path(@book.id), method: :patch do |f| %>
   
   <div class="field">
     <div class="Tile">Ttile</div>
@@ -17,9 +25,9 @@
   </div>
   
   <div>
-    <span class="list-show"><%=link_to "show", book_path(@list.id) %></span>
+    <span class="book-show"><%=link_to "show", book_path(@book.id) %></span>
     <span> | </span>
-    <span class="list-show"><%=link_to "back", "/books" %></span>
+    <span class="book-show"><%=link_to "back", "/books" %></span>
   </div>
   
 <% end %>
