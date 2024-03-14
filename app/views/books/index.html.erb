@@ -1,5 +1,5 @@
 <h1>Books</h1>
-<table>
+ <table>
   <tr><th>Ttile</th><th>Body</th><th></th><th></th><th></th></tr>
   <% @lists.each do |list| %>
     <tr>
@@ -12,8 +12,10 @@
   <% end %>
 </table>
 
+
+
 <h2>New Book</h2>
-<!-- form_with部分 -->
+ <!-- form_with部分 -->
 <%= form_with model: @list, url: '/books', method: :post  do |f| %>
   
   <div class="field">

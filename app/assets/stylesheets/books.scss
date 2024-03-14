@@ -6,8 +6,31 @@ body {
 }
 
 tr td {
+    font-size: 13px;
     padding-left: 5px;
     padding-right: 5px;
+}
+
+.list-title{
+    font-size: 13px;
+    padding-left: 0px;
+}
+
+
+.list-body {
+    padding-left: 10px;
+}
+
+.list-show {
+   color: #000;
+}
+
+.list-edit {
+   color: #000;
+}
+
+.list-destroy {
+    color: #000;
 }
 
 .field {
@@ -25,7 +48,8 @@ tr td {
 
 
 a:hover {
-  background-color: gold;
+    color: #fff;
+    background-color: #000
 }
 
 a:visited {

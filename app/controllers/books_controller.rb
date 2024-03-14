@@ -9,7 +9,7 @@ class BooksController < ApplicationController
     @list = List.new(list_params)
     # 3. データをデータベースに保存するためのsaveメソッド実行
     if @list.save
-      flash[:notice] = "投稿に成功しました。"
+      flash[:notice] = "Book was successfully created."
 
     
     # 4. トップ画面へリダイレクト
@@ -37,15 +37,20 @@ class BooksController < ApplicationController
   end
   
   def update
-    list = List.find(params[:id])
-    list.update(list_params)
-    redirect_to book_path(list.id)
+  @list = List.find(params[:id])
+    if @list.update(list_params)
+    flash[:notice] = "Book was successfully updated."
+    redirect_to book_path(@list.id)
+    else
+    flash.now[:alert] = "編集に失敗しました。"
+    render 'edit'
+    end
   end
-  
+
   def destroy
     list = List.find(params[:id])  # データ（レコード）を1件取得
     list.destroy  # データ（レコード）を削除
-    redirect_to '/books'  # 投稿一覧画面へリダイレクト  
+    redirect_to '/books',notice: '削除されました'  # 投稿一覧画面へリダイレクト  
   end
   
   private
